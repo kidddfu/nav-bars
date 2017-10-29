@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽屉式导航栏 </title>
+    <script src="./jquery-3.2.1.js"></script>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+                margin: 0;
+                height: 100%;
+            }
+
+        ul {
+             padding: 0;
+             margin: 0;
+             list-style: none;
+          }
+
+         a {
+              text-decoration: none;
+         }
+/*button的*/
+         .site-nav-logo{
+            width: 44px;
+            height: 44px;
+            background: #333332;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border: 0;
+            /*添加一个按钮的渐变*/
+            transition: opacity .3s linear;
+         }        
+        .site-nav-drawer-open .site-nav-logo {
+            display: none;
+      
+        }
+        .site-nav-transition .site-nav-logo {
+            opacity: 0;
+        }
+
+         .container {
+            background: #EAEAF1;
+            color: #333332;
+            height: 100%;
+            /*平滑的展开nav*/
+            transition: -webkit-transform .2s cubic-bezier(0.2,0.3,0.25,0.9); 
+        }
+        .site-nav-transition .container{
+            position: fixed;
+        }
+        .site-nav-drawer-open .container{
+            /*transform: translate3d(280px,0,0);
+                这条需要做兼容，我们去一个叫prefixr的网站，粘贴即生成
+            */
+            -webkit-transform: translate3d(280px,0,0);
+            position: fixed;
+        }
+
+        .scroll-region {
+            height: 100%;
+            overflow: auto;
+            padding: 100px;
+            border: 5px solid rebeccapurple;
+            box-sizing: border-box;
+        }
+        
+        /*
+        接下来是按钮层的css👇
+        */
+        .site-nav {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            outline: 0;
+            background-color: #191918;
+        }
+        .site-nav-scrollable-container {
+            display: none;
+            overflow: auto;
+            height: 100%;
+        }
+        .site-nav-transition .site-nav-scrollable-container {
+            display: block;
+            width: 280px;
+        }
+        .site-nav-list-item-btn {
+            color: #b3b3b1;
+            display: block;
+            padding: 0 25px;
+            height: 42px;
+            line-height: 45px;
+            border: 0;
+            background: black;
+        }
+        .site-nav-list-item-btn:hover {
+            color: #fff;
+            outline: 0;
+        }
+
+        /*设置这个site-nav-overlay*/
+        .site-nav-overlay {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0
+        }
+        .site-nav-drawer-open .site-nav-overlay {
+            left: 280px;
+            z-index: 900;
+            display: block;
+        }
+    </style>
+   
+</head>
+
+<body>
+    <nav class="site-nav">
+            <button class="site-nav-logo">M</button>
+
+            <div class="site-nav-scrollable-container">
+                <ul class="site-nav-list">
+                    <li>
+                        <a href="" class="site-nav-list-item-btn">Home</a>
+                    </li>
+                    <li>
+                        <a href="" class="site-nav-list-item-btn">Hom2e</a>
+                            
+                    </li>
+                    <li>                       
+                        <a href="" class="site-nav-list-item-btn">Hom3e</a>
+                    </li>    
+                </ul>    
+            </div>  
+
+    </nav>
+
+    <div class="site-nav-overlay">
+
+    </div>
+
+    <div class="container">
+        <div class="scroll-region">
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+    CommonJS对模块的定义十分简单，主要分为模块引用、模块定义和模块标识3个部分。
+    1. 模块引用，模块引用的代码示例如下：var math = require("math");
+    在CommonJS规范中，存在require()方法，这个方法接受模块标识，以此引入一个模块到当前上下文中。
+    2.模块定义，在模块中，上下文提供require()方法来引入外部模块。对应引入到功能，上下文提供了exports对象，
+    用于导出当前模块的方法或者变量，并且它是唯一的出口。在模块中还存在一个module对象，它代表模块自身，
+    而exports是module的属性。在Node中，一个文件就是一个模块，该方法挂载在exports对象上作为属性即可定义导出的方式。
+        </div>
+    </div>    
+
+    <script>
+        var body = $("body");
+    $(".site-nav-logo").click(function(){
+       body.addClass("site-nav-transition site-nav-drawer-open");
+    });
+/*上面的操作的逆操作*/
+    $(".site-nav-overlay").click(function(){
+        body.removeClass("site-nav-drawer-open");
+        setTimeout(function(){
+            body.removeClass("site-nav-transition");
+        },300);
+    });
+    </script>
+</body>
+</html>
